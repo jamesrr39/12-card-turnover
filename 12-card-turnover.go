@@ -64,7 +64,8 @@ func (deckPtr *Deck) WinsRun() bool {
 
 }
 
-// whether the player wins one single card turnover
+// WinsIteration sees whether the player wins one single card turnover
+// if the number is in the same direction they guessed in, or the same as the previous number, the player wins.
 func WinsIteration(userShouldChooseHigher bool, previousCard *Card, nextCard *Card) bool {
 
 	if userShouldChooseHigher && nextCard.Number < previousCard.Number {
@@ -77,20 +78,17 @@ func WinsIteration(userShouldChooseHigher bool, previousCard *Card, nextCard *Ca
 }
 
 func shouldTakeHigher(remainingDeck []*Card, previousCardValue int) bool {
-	amountOfCardsEqualOrHigher := 0
+	amountOfCardsHigher := 0
+	amountOfCardsLower := 0
 	for _, card := range remainingDeck {
-		if card.Number >= previousCardValue {
-			amountOfCardsEqualOrHigher++
+		if card.Number > previousCardValue {
+			amountOfCardsHigher++
+		} else if card.Number < previousCardValue {
+			amountOfCardsLower++
 		}
 	}
 
-	halfNumberOfCards := float64(len(remainingDeck)) / float64(2)
-
-	log.Printf("half the number of cards remaining is %f Amount of cards equal or higher: %d\n", halfNumberOfCards, amountOfCardsEqualOrHigher)
-	if float64(amountOfCardsEqualOrHigher) > halfNumberOfCards {
-		return true
-	}
-	return false
+	return amountOfCardsHigher > amountOfCardsLower
 
 }
 
