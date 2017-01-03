@@ -15,3 +15,9 @@ Make sure you run this with enough iterations! On my laptop 1000000 (one million
 ### Plot spoiler
 
 [Don't click if you don't want to know!](./plot-spoiler.txt)
+
+### Run
+
+You need Go installed.
+
+    go run 12-card-turnover.go
