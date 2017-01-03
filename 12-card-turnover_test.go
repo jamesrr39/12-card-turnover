@@ -2,8 +2,6 @@ package main
 
 import (
 	"testing"
-
-	//"github.com/stretchr/testify/assert"
 )
 
 func Test_shouldTakeHigher(t *testing.T) {
@@ -12,7 +10,6 @@ func Test_shouldTakeHigher(t *testing.T) {
 	if !shouldTakeHigher(existingDeck, 3) {
 		t.Errorf("exected to take higher")
 	}
-	//assert.True(shouldTakeHigher(existingDeck, 3))
 
 }
 
